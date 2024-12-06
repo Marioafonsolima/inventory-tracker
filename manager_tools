@@ -1,0 +1,61 @@
+import os
+import pandas as pd
+
+class Manager:
+    def __init__(self):
+        self.cellars = []
+        self.wineyards = []
+        self.grapes = []
+
+    # Método genérico para adicionar itens
+    def add_item(self, item_list, item_name):
+        if item_name in item_list:
+            print(f"{item_name} already registered")
+        else:
+            item_list.append(item_name)
+            print(f"{item_name} registered")
+
+    # Método genérico para remover itens
+    def del_item(self, item_list, item_name):
+        if item_name in item_list:
+            item_list.remove(item_name)
+            print(f"{item_name} removed")
+        else:
+            print(f"{item_name} not registered")
+
+    # Método genérico para listar itens
+    def list_items(self, item_list, item_type):
+        if item_list:
+            print(f"Registered {item_type}: {', '.join(item_list)}")
+        else:
+            print(f"No {item_type} registered.")
+
+    # Métodos específicos para cellars
+    def add_cellar(self, cellar_id):
+        self.add_item(self.cellars, cellar_id)
+
+    def del_cellar(self, cellar_id):
+        self.del_item(self.cellars, cellar_id)
+
+    def list_cellars(self):
+        self.list_items(self.cellars, "cellars")
+
+    # Métodos específicos para wineyards
+    def add_wineyard(self, wineyard_id):
+        self.add_item(self.wineyards, wineyard_id)
+
+    def del_wineyard(self, wineyard_id):
+        self.del_item(self.wineyards, wineyard_id)
+
+    def list_wineyards(self):
+        self.list_items(self.wineyards, "wineyards")
+
+    # Métodos específicos para grapes
+    def add_grape(self, grape_name):
+        self.add_item(self.grapes, grape_name)
+
+    def del_grape(self, grape_name):
+        self.del_item(self.grapes, grape_name)
+
+    def list_grapes(self):
+        self.list_items(self.grapes, "grapes")
